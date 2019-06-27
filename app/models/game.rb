@@ -4,4 +4,5 @@ class Game < ApplicationRecord
   validates :description, length: { in: 5...250 }
 
   has_and_belongs_to_many :genres
+  has_and_belongs_to_many :plataforms
 end

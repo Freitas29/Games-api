@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_27_052328) do
+ActiveRecord::Schema.define(version: 2019_06_27_052608) do
 
   create_table "games", force: :cascade do |t|
     t.string "title"
@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(version: 2019_06_27_052328) do
 
   create_table "games_genres", id: false, force: :cascade do |t|
     t.integer "genre_id", null: false
+    t.integer "game_id", null: false
+  end
+
+  create_table "games_plataforms", id: false, force: :cascade do |t|
+    t.integer "plataform_id", null: false
     t.integer "game_id", null: false
   end
 
