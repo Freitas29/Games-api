@@ -33,6 +33,6 @@ class PlataformsController < ApplicationController
   end
 
   def plataforms_params
-    params.require(:plataform).permit(:description)
+    params.require(:plataform).permit(:description,:logo)
   end
 end
