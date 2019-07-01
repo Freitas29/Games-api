@@ -4,7 +4,7 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show,:update,:destroy]
 
   def index
-    render json: Game.all
+    render json: Game.paginate(page: params[:page] || 1, per_page: 20)
   end
 
   def create
