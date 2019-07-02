@@ -6,4 +6,6 @@ class Game < ApplicationRecord
   has_one_attached :image
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :plataforms
+
+  validates :image, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
 end

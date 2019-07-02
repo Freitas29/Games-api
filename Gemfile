@@ -10,6 +10,7 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 
+gem 'active_storage_validations'
 gem 'mini_magick'
 
 gem 'rack-cors'
