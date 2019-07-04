@@ -1,10 +1,14 @@
-
 class GamesController < ApplicationController
-
   before_action :set_game, only: [:show,:update,:destroy]
 
+  include Pagination
+
   def index
-    render json: Game.paginate(page: params[:page] || 1, per_page: 20)
+    games =  Game.paginate(page: params[:page] || 1, per_page: params[:per_page] || 6)
+    render json: {
+      games: ActiveModelSerializers::SerializableResource.new(games), 
+      meta: pagination_dict(games)
+    }
   end
 
   def create

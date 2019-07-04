@@ -2,11 +2,11 @@ class GameSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :genres, :plataforms, :logo, :image
 
   def genres
-    object.genres.pluck(:description)
+    object.genres.pluck(:id,:description)
   end
 
   def plataforms
-    object.plataforms.pluck(:description)
+    object.plataforms.pluck(:id,:description)
   end
 
   def image
