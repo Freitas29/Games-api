@@ -4,7 +4,7 @@ class GamesController < ApplicationController
   include Pagination
 
   def index
-    games =  Game.paginate(page: params[:page] || 1, per_page: params[:per_page] || 6)
+    games =  Game.filter(params).paginate(page: params[:page] || 1, per_page: params[:per_page] || 6)
     render json: {
       games: ActiveModelSerializers::SerializableResource.new(games), 
       meta: pagination_dict(games)
