@@ -8,6 +8,7 @@ class Game < ApplicationRecord
   has_and_belongs_to_many :plataforms
 
   scope :by_genres, -> (genres) { joins(:genres).where("genres.description": genres)}
+  scope :by_plataforms, -> (plataforms) { joins(:plataforms).where("plataforms.description": plataforms)}
 
   validates :image, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
 
@@ -15,6 +16,7 @@ class Game < ApplicationRecord
   def self.filter(params)
     games = self.all
     games = self.by_genres(params[:by_genres]) if params[:by_genres].present?
+    games = self.by_plataforms(params[:by_plataforms]) if params[:by_plataforms].present?
     games
   end
 end
