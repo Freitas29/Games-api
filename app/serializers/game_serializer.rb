@@ -2,11 +2,17 @@ class GameSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :genres, :plataforms, :logo, :image
 
   def genres
-    object.genres.pluck(:id,:description)
+    object.genres.map {|g| {
+      id: g.id,
+      description: g.description
+    }}
   end
 
   def plataforms
-    object.plataforms.pluck(:id,:description)
+    object.plataforms.map {|p| {
+      id: p.id,
+      description: p.description
+    }}
   end
 
   def image
@@ -14,6 +20,6 @@ class GameSerializer < ActiveModel::Serializer
   end
 
   def logo
-    object.plataforms.map {|p| "http://localhost:3001/"+Rails.application.routes.url_helpers.rails_blob_path(p.logo,only_path: true)}
+    object.plataforms.map {|l| "http://localhost:3001/"+Rails.application.routes.url_helpers.rails_blob_path(l.logo,only_path: true)}
   end
 end

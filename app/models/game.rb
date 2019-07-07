@@ -9,7 +9,7 @@ class Game < ApplicationRecord
 
   scope :by_genres, -> (genres) { joins(:genres).where("genres.description": genres)}
   scope :by_plataforms, -> (plataforms) { joins(:plataforms).where("plataforms.description": plataforms)}
-
+  scope :by_title, -> (title) {where("title like ?", "#{title}%")}
   validates :image, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
 
 
